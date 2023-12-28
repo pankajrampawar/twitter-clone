@@ -1,5 +1,0 @@
-mongodb 
-    project: twitterClone
-    cluster: Cluster0
-    username: pankajpawars123
-    password: 9MEqh9IS0BW63aU9
