@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDb = async() => {
     try {
-        const url = "mongodb+srv://pankajpawars123:9MEqh9IS0BW63aU9@cluster0.a8szdse.mongodb.net/";
+        const url = process.env.DATABASE_URL;
         const dbName = "Cluster0";
 
         await mongoose.connect(`${url}/${dbName}`)
