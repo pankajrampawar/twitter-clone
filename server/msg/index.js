@@ -1,5 +1,6 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const connectDb = require('./db');
+const bodyparser = require('body-parser')
 const app = express();
 const port = 3000;
 
@@ -7,8 +8,11 @@ app.get('/',(req, res) => {
     res.send('hello world')
 })
 
+connectDb();
+
 const USERS = [
     {
+        name: 'pankaj',
         userName: "pankajPawar",
         phone: "9356446407",
         dOB: "23-4-2005",
@@ -17,16 +21,7 @@ const USERS = [
 ]
 
 app.post('/signup', (req, res) => {
-    /* {
-        username: nameOfUser
-        phone: PhoneNumber or email
-        DOB: month, day, year
-        password: UserPassword
-
-    } */
-
-
-    const { username, phoneNumber, dOB, password } = req.body;
+    const newUser = req.body;
 
 
 })
