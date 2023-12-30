@@ -15,8 +15,7 @@ exports.postTweet = async (req, res) => {
     } catch (error) {
         console.error('Internal server error', error);
         res.status(500).json({ message: "Failed to tweet, Internal server error, please try again later" });
-    }
-    
+    };
 }
 
 exports.updateTweet = async (req, res) => {
@@ -31,6 +30,17 @@ exports.updateTweet = async (req, res) => {
         })
     } catch (error) {
         res.status(500).json({ message: "Internal Server Error", error})
+    };
+}
+
+exports.deleteTweet = async (req, res) => {
+    try {
+        const tweetId = req.params.id;
+        
+        const response = await tweetServices.deleteTweet(tweetId);
+        
+        res.status(response.status).json({ message: response.message });
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error});
     }
-    
 }
