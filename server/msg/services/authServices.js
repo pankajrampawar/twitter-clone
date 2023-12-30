@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 exports.signup = async (newUser) => {
     const userToSave = new userModel({
         name: newUser.name,
-        username: newUser.name,
+        username: newUser.username,
         email: newUser.email,
         phoneNumber: newUser.phoneNumber,
         password: bcrypt.hashSync(newUser.password, 10),
