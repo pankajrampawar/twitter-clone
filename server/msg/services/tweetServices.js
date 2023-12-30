@@ -8,3 +8,16 @@ exports.postTweet = async (newTweet, userId) => {
 
     return tweetToPost.save()
 }
+
+exports.updateTweet = async (updatedContent, tweetId) => {
+    try {
+        await TweetModel.findByIdAndUpdate(
+            tweetId,
+            {$set: { content: updatedContent}},
+            { new: true }
+        );
+        return { status: 200, message: "tweet updated", content: updatedContent}
+    } catch (error) {
+        return { message: "error", error};
+    }
+}
