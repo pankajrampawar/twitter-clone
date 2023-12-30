@@ -13,8 +13,14 @@ const TweetSchema = new mongoose.Schema({
     createdOn: {
         type: Date,
         default: Date.now,
-    }
-})
+    },
+    likes: {
+        type: Number
+    },
+    reposts: {
+        type: Number
+    },
+});
 
 const Tweet = mongoose.model('Tweet', TweetSchema);
 
