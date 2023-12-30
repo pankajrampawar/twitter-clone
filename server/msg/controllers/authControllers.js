@@ -8,7 +8,7 @@ exports.signup = async (req, res) => {
         const response = await authServices.signup(newUser);
 
         const token = jwt.sign(
-            { userId: response.userId },
+            { userId: response._id },
             process.env.JWT_SECRET_KEY,
             { expiresIn: '5h'}
         );
@@ -25,7 +25,14 @@ exports.login = async (req, res) => {
     try {
         const { username, password } = req.body;
         const loginResponse = await authServices.login(username, password);
-        res.status(loginResponse.status).json({ message: loginResponse.message });
+
+        const token = jwt.sign(
+            { userId: loginResponse._id},
+            process.env.JWT_SECRET_KEY,
+            { expiresIn: '5h'}
+        );
+
+        res.status(loginResponse.status).json({ message: loginResponse.message, token });
     } catch (error) {
         res.status(500).json({ message: "internal server error", error});
     }   

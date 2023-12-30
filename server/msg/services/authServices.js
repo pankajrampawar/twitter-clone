@@ -26,7 +26,7 @@ exports.login = async (username, password) => {
         const passwordMatch = await bcrypt.compare(password, user.password);
 
         if (passwordMatch) {
-            return { status: 200, message: "login successfull"};
+            return { status: 200, message: "login successfull", _id: user._id};
         } else {
             return { status: 401, message: "password does not match" };
         };
