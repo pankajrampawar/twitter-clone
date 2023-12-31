@@ -44,6 +44,14 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }],
+    likedTweets: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tweet'
+    }],
+    bookmarks: [{
+        type: mongoose.Schema.Types.ObjectId,
+        reff: 'Tweet'
+    }],
     profilePicture: String,
     bio: String
 })
