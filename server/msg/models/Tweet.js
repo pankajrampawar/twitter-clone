@@ -20,6 +20,9 @@ const TweetSchema = new mongoose.Schema({
     reposts: {
         type: Number
     },
+    retweetsCount: {
+        type: Number
+    }
 });
 
 const Tweet = mongoose.model('Tweet', TweetSchema);
