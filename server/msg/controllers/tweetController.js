@@ -1,4 +1,3 @@
-const TweetModel = require('../models/Tweet');
 const tweetServices = require('../services/tweetServices')
 const userServices = require('../services/userServices');
 
@@ -18,7 +17,7 @@ exports.postTweet = async (req, res) => {
     };
 }
 
-exports.updateTweet = async (req, res) => {
+exports.updateTweetContent = async (req, res) => {
     try {
         const tweetId = req.params.id;
         const updatedContent = req.body.content;
@@ -56,3 +55,4 @@ exports.likeTweet = async (req, res) => {
         res.status(500).json({ message: "Internal server error", error });
     }
 }
+

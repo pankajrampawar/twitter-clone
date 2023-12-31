@@ -53,3 +53,17 @@ exports.likeTweet = async (tweetId) => {
         return { message: "internal server error", error};
     }
 }
+
+exports.updateRetweetCount = async (tweetRetweetedId) => {
+    try {
+        await TweetModel.findByIdAndUpdate(
+            tweetRetweetedId,
+            { $inc: { retweetsCount: 1 } },
+            { new: true }
+        )
+
+        return { status: 200, message: "tweet updated successfully" };
+    } catch (error) {
+        return { status: 500, message: "failed to retweet"}
+    }
+}
