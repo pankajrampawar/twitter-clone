@@ -7,8 +7,9 @@ const { verifyToken } = require('../middleware/jwtMiddleware');
 router.post('/postTweet', verifyToken, tweetController.postTweet);
 router.put('/updateTweet/:id', verifyToken, tweetController.updateTweet);
 router.delete('/deleteTweet/:id', verifyToken, tweetController.deleteTweet);
-router.put('/like', verifyToken, tweetController.likeTweet);
-router.put('/retweet', verifyToken, userActionController.retweet);
+router.put('/like/:id', verifyToken, tweetController.likeTweet);
+router.put('/retweet/:id', verifyToken, userActionController.retweet);
+
 
 module.exports = router;
 
