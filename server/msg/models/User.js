@@ -32,6 +32,10 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Tweet'
     }],
+    retweets: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tweet'
+    }],
     followers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
