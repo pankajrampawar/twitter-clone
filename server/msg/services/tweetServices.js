@@ -35,3 +35,21 @@ exports.deleteTweet = async (tweetId) => {
         return { message: "error deleting the data", error};
     }
 }
+
+exports.likeTweet = async (tweetId) => {
+    try {
+        const updatedTweet = await TweetModel.findByIdAndUpdate(
+            tweetId,
+            { $inc: { likes : 1 } },
+            { new: true }
+        )
+
+        if (!updatedTweet) {
+            return { status: 404, message: "Tweet not found" };
+        }
+
+        return { status: 200, message: "Liked the tweet", tweet: updatedTweet };
+    } catch (error) {
+        return { message: "internal server error", error};
+    }
+}

@@ -44,3 +44,15 @@ exports.deleteTweet = async (req, res) => {
         res.status(500).json({ message: "Internal server error", error});
     }
 }
+
+exports.likeTweet = async (req, res) => {
+    try {
+        const tweetId = req.params.id;
+
+        const response = await tweetServices.likeTweet(tweetId);
+
+        res.status(response.status).json({message: response.message, tweet: response.tweet})
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error });
+    }
+}
