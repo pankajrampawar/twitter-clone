@@ -14,3 +14,16 @@ exports.retweet = async (req, res) => {
         res.status(500).json({ message: "internal server error", error });
     }
 }
+
+exports.updateBio = async (req, res) => {
+    try {
+        const userId = req.userId;
+        const updatedBio = req.body.bio;
+
+        const response = await userServices.updateUserBio(userId, updatedBio);
+
+        res.status(response.status).json({ user: response.user, message: response.message })
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}

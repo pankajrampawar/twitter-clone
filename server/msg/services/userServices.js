@@ -27,3 +27,16 @@ exports.updateRetweetsByUser  = async (userId, tweetToRetweetId) => {
         return { status: 500, message: "Internal server error"};
     };
 }
+
+exports.updateUserBio = async (userId, updatedBio) => {
+    try {
+        const updatedUser = await userModel.findByIdAndUpdate(
+            userId,
+            { $set: { bio: updatedBio }},
+            { new: true}
+        )
+        return {status: 200, message: "Bio updated successfully", user: updatedUser};
+    } catch (error) {
+        return { satus: 500, message: "Unable to update bio, please try again later", error};
+    }
+}
