@@ -54,3 +54,17 @@ exports.updateUserBookmark = async (userId, tweetToBookmarkId) => {
         return { status: 500, message: "unable to bookmark, please try again later", error };
     };
 }
+
+exports.updateProfilePicture = async (userId, updatedProfilePicture) => {
+    try {
+        const updatedUser = await userModel.findByIdAndUpdate(
+            userId,
+            { $push: { profilePicture: updatedProfilePicture }},
+            { new: true }
+        )
+
+        return { status: 200, message: "Profile picture updated successfully", user: updatedUser };
+    } catch (error) {
+        return { status: 500, message: "Unable to update user, please try again later", error };
+    }
+}

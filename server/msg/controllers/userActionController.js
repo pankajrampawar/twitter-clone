@@ -40,3 +40,19 @@ exports.bookmark = async (req, res) => {
         res.status(500).json({ message: "internal server error" });
     };
 }
+
+exports.updateProfilePicture = async (req, res) => {
+    try {
+        const userId = req.userId;
+        const updatedProfilePicture = req.body.profilePicture;
+
+        const response = await userServices.updateProfilePicture(userId, updatedProfilePicture);
+         
+        const { status, message, user } = response;
+
+        res.status(status).json({ message, user });
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error });
+    }
+}
