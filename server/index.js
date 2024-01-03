@@ -5,12 +5,14 @@ const authRoutes = require('./routes/auth');
 const tweetRoutes = require('./routes/tweet')
 const bodyparser = require('body-parser')
 
+port = 3090
+
 app.use(bodyparser.json());
 connectDb();
 
 app.use('/auth', authRoutes);
 app.use('/tweet', tweetRoutes);
 
-app.listen(5000, ()=> {
-    console.log('listening on 3000');
+app.listen(port, ()=> {
+    console.log(`listening on ${port}`);
 })
