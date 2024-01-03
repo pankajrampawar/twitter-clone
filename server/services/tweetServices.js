@@ -66,4 +66,17 @@ exports.updateRetweetCount = async (tweetRetweetedId) => {
     } catch (error) {
         return { status: 500, message: "failed to retweet"}
     }
+};
+
+exports.getAllTweets = async (userId, tweetCount) => {
+    try {
+        const tweets = await TweetModel
+            .find({ userId: { $ne: userId } })
+            .sort({ createdAt: -tweetCount }) // latest first
+            .limit(6) // limits to 6
+
+        return { status: 200, message: "tweets fetched successfully", tweets };
+    } catch (error) {
+        return { status: 200, message: "Error fetching tweets", error };
+    }
 }

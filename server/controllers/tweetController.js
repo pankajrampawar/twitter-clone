@@ -1,6 +1,20 @@
 const tweetServices = require('../services/tweetServices')
 const userServices = require('../services/userServices');
 
+// to get tweets on home page
+exports.getTweet = async (req, res) => {
+    try {
+        const userId = req.userId;
+
+        const response = await tweetServices.getAllTweets(userId, 1);
+
+        res.status(200).json({ message: response.message, tweets: response.tweets });
+    } catch (error) {   
+        res.status(500).json({ message: "Internal server error, please try again later", error});
+    }
+};
+
+// to post a tweet
 exports.postTweet = async (req, res) => {
     try {
         const newTweet = req.body;
