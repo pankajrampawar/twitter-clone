@@ -37,3 +37,16 @@ exports.login = async (req, res) => {
         res.status(500).json({ message: "internal server error", error});
     }   
 };
+
+exports.logout = async (req, res) => {
+    try {
+        const status = req.body.status;
+        if (status === "Cleared") {
+            res.status(200).json({ message: "user logged out successfully" });
+        } else {
+            res.status(500).json({ message: "Error logging out, please try again later" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Unable to logout, please try again later", error });
+    }
+}

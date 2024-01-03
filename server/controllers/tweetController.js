@@ -2,7 +2,7 @@ const tweetServices = require('../services/tweetServices')
 const userServices = require('../services/userServices');
 
 // to get tweets on home page
-exports.getTweet = async (req, res) => {
+exports.getTweets = async (req, res) => {
     try {
         const userId = req.userId;
 
