@@ -11,6 +11,6 @@ connectDb();
 app.use('/auth', authRoutes);
 app.use('/tweet', tweetRoutes);
 
-app.listen(3000, ()=> {
+app.listen(5000, ()=> {
     console.log('listening on 3000');
 })
