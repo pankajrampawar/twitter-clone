@@ -3,7 +3,7 @@ import React from 'react'
 export default function Home() {
   return (
     <main >
-      page edited
+      this is the twitter page
     </main>
   )
 }
