@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-export default function exploreTab() {
+export default function ExploreTab() {
     return (
         <div>
             This is explore tab
