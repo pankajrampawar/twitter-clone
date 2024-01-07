@@ -11,7 +11,7 @@ const IconCard: React.FC<IconCardProps> = ({name, location})=>{
     return (
         <div>
             <div>
-                <img src={require(location)} alt={name} /> 
+                <img src={location} alt={name} /> 
                 {/* userd require to get the image through next js image */}
             </div>
             <div>{name}</div>
@@ -19,10 +19,19 @@ const IconCard: React.FC<IconCardProps> = ({name, location})=>{
     )
 }
 
+
+
 export default function SideNav() {
     return (
         <div>
-            <IconCard location="/icons/home.svg" name="home" />
+            {
+                arrayOfElements.map((element)=>{
+                    return <IconCard
+                        name={element.name}
+                        location={element.location}
+                    />
+                })
+            }
         </div>
     )
 }
