@@ -1,15 +1,12 @@
 'use client'
 
 import React from 'react';
-
-interface IconCardProps {
-    location: string;
-    name: string;
-}
+import { IconCardProps } from '../../interfaces/common';
+import { arrayOfSidenavElements } from '../../home/data';
 
 const IconCard: React.FC<IconCardProps> = ({name, location})=>{
     return (
-        <div>
+        <div className="flex gap-2">
             <div>
                 <img src={location} alt={name} /> 
                 {/* userd require to get the image through next js image */}
@@ -23,9 +20,9 @@ const IconCard: React.FC<IconCardProps> = ({name, location})=>{
 
 export default function SideNav() {
     return (
-        <div>
+        <div className='flex flex-col gap-2 bg-green-400'>
             {
-                arrayOfElements.map((element)=>{
+                arrayOfSidenavElements.map((element)=>{
                     return <IconCard
                         name={element.name}
                         location={element.location}

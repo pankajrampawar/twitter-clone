@@ -1,4 +1,4 @@
-const arrayOfSidenavElements = [
+export const arrayOfSidenavElements = [
     {
         name: "home",
         location: "/icons/home.svg"

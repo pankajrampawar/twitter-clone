@@ -6,7 +6,7 @@ import { Children } from "react"
 export default function Layout({ children } : {children: React.ReactNode}) {
     return (
         <main>
-            <section>
+            <section className="bg-red-200">
                 <SideNav/>
             </section>
             <section>
